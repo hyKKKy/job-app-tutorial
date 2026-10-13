@@ -48,7 +48,7 @@ public class JobController {
         if (deleted) {
             return new ResponseEntity<>("Job deleted", HttpStatus.OK);
         }
-        return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
     }
 
     @PutMapping("/{id}")
