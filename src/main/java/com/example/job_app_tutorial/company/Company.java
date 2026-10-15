@@ -1,9 +1,14 @@
 package com.example.job_app_tutorial.company;
 
+import com.example.job_app_tutorial.job.Job;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
+
+import java.util.List;
 
 @Entity
 public class Company {
@@ -12,6 +17,10 @@ public class Company {
     private Long id;
     private String name;
     private String description;
+
+    @JsonIgnore
+    @OneToMany(mappedBy = "company")
+    private List<Job> jobs;
 
     public Company() {
     }
@@ -38,5 +47,13 @@ public class Company {
 
     public void setDescription(String description) {
         this.description = description;
+    }
+
+    public List<Job> getJobs() {
+        return jobs;
+    }
+
+    public void setJobs(List<Job> jobs) {
+        this.jobs = jobs;
     }
 }
