@@ -7,6 +7,8 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.OneToMany;
+import org.hibernate.annotations.OnDelete;
+import org.hibernate.annotations.OnDeleteAction;
 
 import java.util.List;
 
@@ -20,6 +22,7 @@ public class Company {
 
     @JsonIgnore
     @OneToMany(mappedBy = "company")
+    @OnDelete(action = OnDeleteAction.CASCADE)
     private List<Job> jobs;
 
     public Company() {
