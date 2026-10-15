@@ -10,6 +10,7 @@ public class JobService implements IJobService {
     private final JobRepository jobRepository;
 
     public JobService(JobRepository jobRepository) {
+
         this.jobRepository = jobRepository;
     }
 
