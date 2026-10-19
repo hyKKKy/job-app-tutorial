@@ -49,4 +49,9 @@ public class CompanyService implements ICompanyService {
         }
         return false;
     }
+
+    @Override
+    public Company findOneByName(String name) {
+        return companyRepository.findByName(name).orElse(null);
+    }
 }

@@ -12,4 +12,6 @@ public interface ICompanyService {
     Company getCompanyById(Long id);
 
     boolean deleteCompanyById(Long id);
+
+    Company findOneByName(String name);
 }

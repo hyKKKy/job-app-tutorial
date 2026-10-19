@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
@@ -40,6 +41,15 @@ public class CompanyController {
             return new ResponseEntity<>("Company updated", HttpStatus.OK);
         }
         return new ResponseEntity<>("Company not found", HttpStatus.NOT_FOUND);
+    }
+
+    @GetMapping("/search")
+    public ResponseEntity<Company> getCompanyByName(@RequestParam String name) {
+        Company foundCompany = companyService.findOneByName(name);
+        if (foundCompany == null) {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
+        return new ResponseEntity<>(foundCompany, HttpStatus.OK);
     }
 
     @GetMapping("/{id}")
