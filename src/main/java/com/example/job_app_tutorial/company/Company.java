@@ -1,6 +1,7 @@
 package com.example.job_app_tutorial.company;
 
 import com.example.job_app_tutorial.job.Job;
+import com.example.job_app_tutorial.review.Review;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -24,6 +25,11 @@ public class Company {
     @OneToMany(mappedBy = "company")
     @OnDelete(action = OnDeleteAction.CASCADE)
     private List<Job> jobs;
+
+    @JsonIgnore
+    @OneToMany(mappedBy = "company")
+    @OnDelete(action = OnDeleteAction.CASCADE)
+    private List<Review> reviews;
 
     public Company() {
     }
@@ -58,5 +64,13 @@ public class Company {
 
     public void setJobs(List<Job> jobs) {
         this.jobs = jobs;
+    }
+
+    public List<Review> getReviews() {
+        return reviews;
+    }
+
+    public void setReviews(List<Review> reviews) {
+        this.reviews = reviews;
     }
 }
