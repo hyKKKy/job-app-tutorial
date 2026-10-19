@@ -8,4 +8,8 @@ public interface IReviewService {
     boolean addReview(Long companyId, Review review);
 
     Review getReview(Long companyId, Long reviewId);
+
+    boolean updateReview(Long companyId, Long reviewId, Review updatedReview);
+
+    boolean deleteReview(Long companyId, Long reviewId);
 }
